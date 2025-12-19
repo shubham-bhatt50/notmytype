@@ -66,11 +66,7 @@ export async function captureScreenshot(
     const element = document.getElementById(elementId);
     if (!element) return null;
 
-    const canvas = await html2canvas(element, {
-      backgroundColor: null,
-      scale: 2,
-      logging: false,
-    });
+    const canvas = await html2canvas(element);
 
     return canvas.toDataURL("image/png");
   } catch (error) {
