@@ -1,8 +1,11 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
+
+export const dynamic = "force-dynamic";
 import { PairingCard } from "@/components/gallery/PairingCard";
 import { SearchBar } from "@/components/ui/SearchBar";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { getSavedPairings, deletePairing } from "@/lib/storage";
 import { SavedPairing } from "@/types";
 import { useRouter } from "next/navigation";
@@ -45,29 +48,30 @@ export default function SavedPage() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen bg-neutral-50 dark:bg-primary-900">
       {/* Header */}
-      <header className="bg-white border-b border-neutral-200 sticky top-0 z-10">
+      <header className="bg-white dark:bg-primary-800 border-b border-neutral-200 dark:border-primary-700 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <Link href="/" className="flex items-center gap-2">
-              <h1 className="text-2xl font-bold text-primary-900">
+              <h1 className="text-2xl font-bold text-primary-900 dark:text-primary-50">
                 Not my type
               </h1>
             </Link>
             <nav className="flex items-center gap-4">
               <Link
                 href="/"
-                className="text-sm font-medium text-neutral-700 hover:text-primary-900 transition-colors"
+                className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary-900 dark:hover:text-primary-200 transition-colors"
               >
                 Gallery
               </Link>
               <Link
                 href="/playground"
-                className="text-sm font-medium text-neutral-700 hover:text-primary-900 transition-colors"
+                className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary-900 dark:hover:text-primary-200 transition-colors"
               >
                 Playground
               </Link>
+              <ThemeToggle />
             </nav>
           </div>
         </div>
@@ -76,10 +80,10 @@ export default function SavedPage() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="mb-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-primary-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-primary-900 dark:text-primary-50 mb-4">
             Saved Pairings
           </h2>
-          <p className="text-lg text-neutral-600">
+          <p className="text-lg text-neutral-600 dark:text-neutral-400">
             Your collection of favorite font combinations
           </p>
         </div>
@@ -98,7 +102,7 @@ export default function SavedPage() {
         {/* Results Count */}
         {savedPairings.length > 0 && (
           <div className="mb-6">
-            <p className="text-sm text-neutral-500">
+            <p className="text-sm text-neutral-500 dark:text-neutral-400">
               {filteredPairings.length === 0
                 ? "No saved pairings found matching your search"
                 : `Showing ${filteredPairings.length} of ${savedPairings.length} saved pairing${
@@ -111,19 +115,19 @@ export default function SavedPage() {
         {/* Gallery Grid */}
         {savedPairings.length === 0 ? (
           <div className="text-center py-16">
-            <p className="text-neutral-500 mb-4 text-lg">
+            <p className="text-neutral-500 dark:text-neutral-400 mb-4 text-lg">
               No saved pairings yet. Find your type.
             </p>
             <div className="flex gap-4 justify-center">
               <Link
                 href="/"
-                className="inline-block px-6 py-3 bg-primary-900 text-white rounded-xl font-medium hover:bg-primary-950 transition-colors"
+                className="inline-block px-6 py-3 bg-primary-900 dark:bg-primary-50 text-white dark:text-primary-900 rounded-xl font-medium hover:bg-primary-950 dark:hover:bg-primary-100 transition-colors"
               >
                 Browse Gallery
               </Link>
               <Link
                 href="/playground"
-                className="inline-block px-6 py-3 bg-white border-2 border-primary-900 text-primary-900 rounded-xl font-medium hover:bg-primary-900 hover:text-white transition-colors"
+                className="inline-block px-6 py-3 bg-white dark:bg-primary-800 border-2 border-primary-900 dark:border-primary-200 text-primary-900 dark:text-primary-50 rounded-xl font-medium hover:bg-primary-900 dark:hover:bg-primary-700 hover:text-white dark:hover:text-primary-50 transition-colors"
               >
                 Create Custom
               </Link>
@@ -179,12 +183,12 @@ export default function SavedPage() {
           </div>
         ) : (
           <div className="text-center py-16">
-            <p className="text-neutral-500 mb-4">
+            <p className="text-neutral-500 dark:text-neutral-400 mb-4">
               No pairings found matching your search.
             </p>
             <button
               onClick={() => setSearchQuery("")}
-              className="text-primary-900 hover:underline"
+              className="text-primary-900 dark:text-primary-200 hover:underline"
             >
               Clear search
             </button>

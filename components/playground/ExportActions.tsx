@@ -78,8 +78,8 @@ export const ExportActions: React.FC<ExportActionsProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-md border border-neutral-200 p-6 space-y-4">
-      <h3 className="text-lg font-semibold text-primary-900">Save & Export</h3>
+    <div className="bg-white dark:bg-primary-800 rounded-2xl shadow-md dark:shadow-lg border border-neutral-200 dark:border-primary-700 p-6 space-y-4">
+      <h3 className="text-lg font-semibold text-primary-900 dark:text-primary-50">Save & Export</h3>
 
       <div className="space-y-3">
         <Button
@@ -93,13 +93,13 @@ export const ExportActions: React.FC<ExportActionsProps> = ({
         <div className="grid grid-cols-2 gap-2">
           <button
             onClick={handleExportCSS}
-            className="px-4 py-2 text-sm font-medium bg-neutral-100 hover:bg-neutral-200 rounded-xl transition-colors"
+            className="px-4 py-2 text-sm font-medium bg-neutral-100 dark:bg-primary-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-primary-600 rounded-xl transition-colors"
           >
             Export CSS
           </button>
           <button
             onClick={handleExportJSON}
-            className="px-4 py-2 text-sm font-medium bg-neutral-100 hover:bg-neutral-200 rounded-xl transition-colors"
+            className="px-4 py-2 text-sm font-medium bg-neutral-100 dark:bg-primary-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-primary-600 rounded-xl transition-colors"
           >
             Export JSON
           </button>
@@ -108,13 +108,13 @@ export const ExportActions: React.FC<ExportActionsProps> = ({
         <div className="grid grid-cols-2 gap-2">
           <button
             onClick={() => handleCopy(generateCSS(headingFont, bodyFont), "css")}
-            className="px-4 py-2 text-sm font-medium bg-neutral-100 hover:bg-neutral-200 rounded-xl transition-colors"
+            className="px-4 py-2 text-sm font-medium bg-neutral-100 dark:bg-primary-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-primary-600 rounded-xl transition-colors"
           >
             {copied === "css" ? "✓ Copied" : "Copy CSS"}
           </button>
           <button
             onClick={handleCopyEmbedLink}
-            className="px-4 py-2 text-sm font-medium bg-neutral-100 hover:bg-neutral-200 rounded-xl transition-colors"
+            className="px-4 py-2 text-sm font-medium bg-neutral-100 dark:bg-primary-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-primary-600 rounded-xl transition-colors"
           >
             {copied === "embed" ? "✓ Copied" : "Copy Embed"}
           </button>
@@ -122,14 +122,14 @@ export const ExportActions: React.FC<ExportActionsProps> = ({
 
         <button
           onClick={handleCopyShareLink}
-          className="w-full px-4 py-2 text-sm font-medium bg-neutral-100 hover:bg-neutral-200 rounded-xl transition-colors"
+          className="w-full px-4 py-2 text-sm font-medium bg-neutral-100 dark:bg-primary-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-primary-600 rounded-xl transition-colors"
         >
           {copied === "share" ? "✓ Link Copied" : "Copy Share Link"}
         </button>
 
         <button
           onClick={handleScreenshot}
-          className="w-full px-4 py-2 text-sm font-medium bg-neutral-100 hover:bg-neutral-200 rounded-xl transition-colors"
+          className="w-full px-4 py-2 text-sm font-medium bg-neutral-100 dark:bg-primary-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-primary-600 rounded-xl transition-colors"
         >
           Screenshot Component
         </button>

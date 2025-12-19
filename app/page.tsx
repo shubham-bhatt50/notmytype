@@ -1,9 +1,12 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
+
+export const dynamic = "force-dynamic";
 import { PairingCard } from "@/components/gallery/PairingCard";
 import { SearchBar } from "@/components/ui/SearchBar";
 import { Tag } from "@/components/ui/Tag";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { curatedPairings } from "@/data/pairings";
 import { FontPairing } from "@/types";
 import Link from "next/link";
@@ -48,29 +51,30 @@ export default function Home() {
   }, [searchQuery, selectedTag]);
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen bg-neutral-50 dark:bg-primary-900">
       {/* Header */}
-      <header className="bg-white border-b border-neutral-200 sticky top-0 z-10">
+      <header className="bg-white dark:bg-primary-800 border-b border-neutral-200 dark:border-primary-700 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <Link href="/" className="flex items-center gap-2">
-              <h1 className="text-2xl font-bold text-primary-900">
+              <h1 className="text-2xl font-bold text-primary-900 dark:text-primary-50">
                 Not my type
               </h1>
             </Link>
             <nav className="flex items-center gap-4">
               <Link
                 href="/playground"
-                className="text-sm font-medium text-neutral-700 hover:text-primary-900 transition-colors"
+                className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary-900 dark:hover:text-primary-200 transition-colors"
               >
                 Playground
               </Link>
               <Link
                 href="/saved"
-                className="text-sm font-medium text-neutral-700 hover:text-primary-900 transition-colors"
+                className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary-900 dark:hover:text-primary-200 transition-colors"
               >
                 Saved
               </Link>
+              <ThemeToggle />
             </nav>
           </div>
         </div>
@@ -80,10 +84,10 @@ export default function Home() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-primary-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-primary-900 dark:text-primary-50 mb-4">
             Find Your Type
           </h2>
-          <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
+          <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
             Explore curated font pairings, validate combinations, and save your
             favorites. Build typography that works.
           </p>
@@ -105,8 +109,8 @@ export default function Home() {
               onClick={() => setSelectedTag(null)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 selectedTag === null
-                  ? "bg-primary-900 text-white"
-                  : "bg-white border border-neutral-300 text-neutral-700 hover:border-primary-900"
+                  ? "bg-primary-900 dark:bg-primary-50 text-white dark:text-primary-900"
+                  : "bg-white dark:bg-primary-800 border border-neutral-300 dark:border-primary-600 text-neutral-700 dark:text-neutral-300 hover:border-primary-900 dark:hover:border-primary-400"
               }`}
             >
               All
@@ -119,8 +123,8 @@ export default function Home() {
                 }
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   selectedTag === tag
-                    ? "bg-primary-900 text-white"
-                    : "bg-white border border-neutral-300 text-neutral-700 hover:border-primary-900"
+                    ? "bg-primary-900 dark:bg-primary-50 text-white dark:text-primary-900"
+                    : "bg-white dark:bg-primary-800 border border-neutral-300 dark:border-primary-600 text-neutral-700 dark:text-neutral-300 hover:border-primary-900 dark:hover:border-primary-400"
                 }`}
               >
                 {tag}
@@ -131,7 +135,7 @@ export default function Home() {
 
         {/* Results Count */}
         <div className="mb-6 text-center">
-          <p className="text-sm text-neutral-500">
+          <p className="text-sm text-neutral-500 dark:text-neutral-400">
             {filteredPairings.length === 0
               ? "No pairings found. Try custom builder?"
               : `Showing ${filteredPairings.length} pairing${
@@ -149,12 +153,12 @@ export default function Home() {
           </div>
         ) : (
           <div className="text-center py-16">
-            <p className="text-neutral-500 mb-4">
+            <p className="text-neutral-500 dark:text-neutral-400 mb-4">
               No pairings found. Try broadening your search?
             </p>
             <Link
               href="/playground"
-              className="inline-block px-6 py-3 bg-primary-900 text-white rounded-xl font-medium hover:bg-primary-950 transition-colors"
+              className="inline-block px-6 py-3 bg-primary-900 dark:bg-primary-50 text-white dark:text-primary-900 rounded-xl font-medium hover:bg-primary-950 dark:hover:bg-primary-100 transition-colors"
             >
               Create Custom Pairing
             </Link>

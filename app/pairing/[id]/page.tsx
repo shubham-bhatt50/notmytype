@@ -5,6 +5,7 @@ import { ComponentPreviews } from "@/components/playground/ComponentPreviews";
 import { ExportActions } from "@/components/playground/ExportActions";
 import { PreviewCanvas } from "@/components/playground/PreviewCanvas";
 import { ValidationBadge } from "@/components/ui/ValidationBadge";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { validatePairing } from "@/lib/validation";
 import { ValidationResult } from "@/types";
 import { useParams } from "next/navigation";
@@ -39,33 +40,34 @@ export default function PairingPage() {
   }, [headingFont, bodyFont]);
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen bg-neutral-50 dark:bg-primary-900">
       {/* Header */}
-      <header className="bg-white border-b border-neutral-200 sticky top-0 z-10">
+      <header className="bg-white dark:bg-primary-800 border-b border-neutral-200 dark:border-primary-700 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-xl font-bold text-primary-900">
+            <Link href="/" className="text-xl font-bold text-primary-900 dark:text-primary-50">
               Not my type
             </Link>
             <nav className="flex items-center gap-4">
               <Link
                 href="/"
-                className="text-sm font-medium text-neutral-700 hover:text-primary-900 transition-colors"
+                className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary-900 dark:hover:text-primary-200 transition-colors"
               >
                 Gallery
               </Link>
               <Link
                 href="/playground"
-                className="text-sm font-medium text-neutral-700 hover:text-primary-900 transition-colors"
+                className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary-900 dark:hover:text-primary-200 transition-colors"
               >
                 Playground
               </Link>
               <Link
                 href="/saved"
-                className="text-sm font-medium text-neutral-700 hover:text-primary-900 transition-colors"
+                className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary-900 dark:hover:text-primary-200 transition-colors"
               >
                 Saved
               </Link>
+              <ThemeToggle />
             </nav>
           </div>
         </div>
@@ -75,7 +77,7 @@ export default function PairingPage() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-4">
-            <h1 className="text-3xl font-bold text-primary-900">
+            <h1 className="text-3xl font-bold text-primary-900 dark:text-primary-50">
               Font Pairing
             </h1>
             {validation && (
@@ -86,13 +88,13 @@ export default function PairingPage() {
             )}
           </div>
           <div className="space-y-2">
-            <p className="text-lg">
+            <p className="text-lg text-primary-900 dark:text-primary-50">
               <span className="font-semibold">Heading:</span>{" "}
               <span style={{ fontFamily: `"${headingFont}", serif` }}>
                 {headingFont}
               </span>
             </p>
-            <p className="text-lg">
+            <p className="text-lg text-primary-900 dark:text-primary-50">
               <span className="font-semibold">Body:</span>{" "}
               <span style={{ fontFamily: `"${bodyFont}", sans-serif` }}>
                 {bodyFont}
@@ -101,7 +103,7 @@ export default function PairingPage() {
           </div>
           <Link
             href={`/playground?heading=${encodeURIComponent(headingFont)}&body=${encodeURIComponent(bodyFont)}`}
-            className="inline-block mt-4 px-6 py-3 bg-primary-900 text-white rounded-xl font-medium hover:bg-primary-950 transition-colors"
+            className="inline-block mt-4 px-6 py-3 bg-primary-900 dark:bg-primary-50 text-white dark:text-primary-900 rounded-xl font-medium hover:bg-primary-950 dark:hover:bg-primary-100 transition-colors"
           >
             Edit in Playground
           </Link>

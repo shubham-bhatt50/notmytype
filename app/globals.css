@@ -5,6 +5,11 @@
   --foreground: #0A0A0A;
 }
 
+.dark {
+  --background: #0A0A0A;
+  --foreground: #FAFAFA;
+}
+
 @theme inline {
   /* Brand Fonts */
   --font-display: var(--font-instrument-serif, var(--font-fraunces, var(--font-lora)));
@@ -98,4 +103,8 @@ body {
   background: var(--color-primary-900);
   border-radius: 10px;
   z-index: 1;
+}
+
+.dark .shimmer-border-inner {
+  background: var(--color-primary-900);
 }

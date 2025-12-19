@@ -46,7 +46,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder={placeholder}
-        className="w-full bg-white border border-neutral-300 rounded-xl px-4 py-3 pr-10 focus:border-primary-900 focus:ring-2 focus:ring-primary-900/20 transition-all duration-200 placeholder:text-neutral-400 outline-none"
+        className="w-full bg-white dark:bg-primary-800 border border-neutral-300 dark:border-primary-600 rounded-xl px-4 py-3 pr-10 focus:border-primary-900 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-900/20 dark:focus:ring-primary-400/20 transition-all duration-200 placeholder:text-neutral-400 dark:placeholder:text-neutral-500 text-primary-900 dark:text-primary-50 outline-none"
       />
       {query && (
         <button

@@ -123,7 +123,7 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
 
   return (
     <div className="space-y-2">
-      <label className="block text-sm font-medium text-neutral-700">
+      <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-300">
         {label}
       </label>
       <div className="relative">
@@ -138,7 +138,7 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
           onFocus={() => setIsOpen(true)}
           onKeyDown={handleKeyDown}
           placeholder={`Search fonts... (e.g., "Inter", "Roboto")`}
-          className="w-full bg-white border border-neutral-300 rounded-xl px-4 py-3 focus:border-primary-900 focus:ring-2 focus:ring-primary-900/20 transition-all duration-200 placeholder:text-neutral-400 outline-none"
+          className="w-full bg-white dark:bg-primary-700 border border-neutral-300 dark:border-primary-600 rounded-xl px-4 py-3 focus:border-primary-900 dark:focus:border-primary-400 focus:ring-2 focus:ring-primary-900/20 dark:focus:ring-primary-400/20 transition-all duration-200 placeholder:text-neutral-400 dark:placeholder:text-neutral-500 text-primary-900 dark:text-primary-50 outline-none"
         />
         {loading && (
           <div className="absolute right-3 top-1/2 -translate-y-1/2">
@@ -150,23 +150,23 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
         {isOpen && filteredFonts.length > 0 && (
           <div
             ref={dropdownRef}
-            className="absolute z-50 w-full mt-2 bg-white border border-neutral-200 rounded-xl shadow-lg max-h-64 overflow-y-auto overscroll-contain"
+            className="absolute z-50 w-full mt-2 bg-white dark:bg-primary-800 border border-neutral-200 dark:border-primary-600 rounded-xl shadow-lg dark:shadow-xl max-h-64 overflow-y-auto overscroll-contain"
           >
             {filteredFonts.map((font, index) => (
               <button
                 key={font.family}
                 onClick={() => handleSelect(font)}
-                className={`w-full text-left px-4 py-3 hover:bg-neutral-50 transition-colors ${
-                  index === selectedIndex ? "bg-neutral-100" : ""
+                className={`w-full text-left px-4 py-3 hover:bg-neutral-50 dark:hover:bg-primary-700 transition-colors ${
+                  index === selectedIndex ? "bg-neutral-100 dark:bg-primary-700" : ""
                 }`}
               >
                 <div
-                  className="font-medium"
+                  className="font-medium text-primary-900 dark:text-primary-50"
                   style={{ fontFamily: `"${font.family}", ${font.category}` }}
                 >
                   {font.family}
                 </div>
-                <div className="text-xs text-neutral-500 mt-1">
+                <div className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">
                   {font.category}
                 </div>
               </button>
@@ -175,7 +175,7 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
         )}
 
         {isOpen && !loading && filteredFonts.length === 0 && searchQuery && (
-          <div className="absolute z-50 w-full mt-2 bg-white border border-neutral-200 rounded-xl shadow-lg p-4 text-center text-sm text-neutral-500">
+          <div className="absolute z-50 w-full mt-2 bg-white dark:bg-primary-800 border border-neutral-200 dark:border-primary-600 rounded-xl shadow-lg dark:shadow-xl p-4 text-center text-sm text-neutral-500 dark:text-neutral-400">
             No fonts found
           </div>
         )}
@@ -187,8 +187,8 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
           onClick={() => setSelectedCategory(null)}
           className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
             selectedCategory === null
-              ? "bg-primary-900 text-white"
-              : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+              ? "bg-primary-900 dark:bg-primary-50 text-white dark:text-primary-900"
+              : "bg-neutral-100 dark:bg-primary-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-primary-600"
           }`}
         >
           All
@@ -203,8 +203,8 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
             }
             className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
               selectedCategory === category
-                ? "bg-primary-900 text-white"
-                : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+                ? "bg-primary-900 dark:bg-primary-50 text-white dark:text-primary-900"
+                : "bg-neutral-100 dark:bg-primary-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-primary-600"
             }`}
           >
             {category}
@@ -214,10 +214,10 @@ export const FontSelector: React.FC<FontSelectorProps> = ({
 
       {/* Current Selection */}
       {value && (
-        <div className="pt-2 border-t border-neutral-200">
-          <p className="text-xs text-neutral-500 mb-1">Selected</p>
+        <div className="pt-2 border-t border-neutral-200 dark:border-primary-700">
+          <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-1">Selected</p>
           <p
-            className="text-sm font-medium"
+            className="text-sm font-medium text-primary-900 dark:text-primary-50"
             style={{ fontFamily: `"${value}", sans-serif` }}
           >
             {value}

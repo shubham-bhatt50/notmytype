@@ -29,7 +29,7 @@ export const PreviewCanvas: React.FC<PreviewCanvasProps> = ({
     <Card hover={false}>
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-semibold text-primary-900">
+          <h3 className="text-lg font-semibold text-primary-900 dark:text-primary-50">
             Live Preview
           </h3>
           <div className="flex items-center gap-3">
@@ -41,7 +41,7 @@ export const PreviewCanvas: React.FC<PreviewCanvasProps> = ({
             )}
             <button
               onClick={() => setIsDark(!isDark)}
-              className="px-3 py-1.5 text-sm font-medium bg-neutral-100 hover:bg-neutral-200 rounded-lg transition-colors"
+              className="px-3 py-1.5 text-sm font-medium bg-neutral-100 dark:bg-primary-700 hover:bg-neutral-200 dark:hover:bg-primary-600 text-primary-900 dark:text-primary-50 rounded-lg transition-colors"
             >
               {isDark ? "Light" : "Dark"} Mode
             </button>
@@ -53,7 +53,7 @@ export const PreviewCanvas: React.FC<PreviewCanvasProps> = ({
         >
           {/* H1 */}
           <div>
-            <p className="text-xs text-neutral-500 mb-1">H1 - Hero Headline</p>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-1">H1 - Hero Headline</p>
             <h1
               className="text-4xl font-bold"
               style={{ fontFamily: `"${headingFont}", serif` }}
@@ -64,7 +64,7 @@ export const PreviewCanvas: React.FC<PreviewCanvasProps> = ({
 
           {/* H2 */}
           <div>
-            <p className="text-xs text-neutral-500 mb-1">H2 - Subheading</p>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-1">H2 - Subheading</p>
             <h2
               className="text-2xl font-semibold"
               style={{ fontFamily: `"${headingFont}", serif` }}
@@ -75,7 +75,7 @@ export const PreviewCanvas: React.FC<PreviewCanvasProps> = ({
 
           {/* Body */}
           <div>
-            <p className="text-xs text-neutral-500 mb-1">Body Text</p>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-1">Body Text</p>
             <p
               className="text-base leading-relaxed"
               style={{ fontFamily: `"${bodyFont}", sans-serif` }}
@@ -88,7 +88,7 @@ export const PreviewCanvas: React.FC<PreviewCanvasProps> = ({
 
           {/* Button */}
           <div>
-            <p className="text-xs text-neutral-500 mb-1">Button / CTA</p>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-1">Button / CTA</p>
             <button
               className={`px-6 py-3 rounded-xl font-medium transition-colors ${
                 isDark
@@ -103,9 +103,9 @@ export const PreviewCanvas: React.FC<PreviewCanvasProps> = ({
 
           {/* Caption */}
           <div>
-            <p className="text-xs text-neutral-500 mb-1">Caption / Small Text</p>
+            <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-1">Caption / Small Text</p>
             <p
-              className="text-sm text-neutral-500"
+              className={`text-sm ${isDark ? "text-neutral-400" : "text-neutral-500"}`}
               style={{ fontFamily: `"${bodyFont}", sans-serif` }}
             >
               Small caption text for metadata, labels, or secondary information

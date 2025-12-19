@@ -128,7 +128,7 @@ export const ComponentPreviews: React.FC<ComponentPreviewsProps> = ({
         </div>
 
         {/* Preview */}
-        <div className="pt-4 border-t border-neutral-200">
+        <div className="pt-4 border-t border-neutral-200 dark:border-primary-700">
           <div id="component-preview" className="flex justify-center">
             {renderComponent()}
           </div>
