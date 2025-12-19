@@ -85,7 +85,7 @@ export const PairingCard: React.FC<PairingCardProps> = ({ pairing }) => {
         </div>
 
         {/* Action Button */}
-        <Button variant="primary" onClick={handleTryPairing} className="w-full">
+        <Button variant="primary" onClick={handleTryPairing} className="w-full shimmer-border relative">
           Try this pairing
         </Button>
       </div>
