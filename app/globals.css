@@ -103,8 +103,10 @@ body {
   background: var(--color-primary-900);
   border-radius: 10px;
   z-index: 1;
+  color: white;
 }
 
 .dark .shimmer-border-inner {
-  background: var(--color-primary-900);
+  background: var(--color-primary-50);
+  color: var(--color-primary-900);
 }

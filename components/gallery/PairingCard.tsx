@@ -68,7 +68,7 @@ export const PairingCard: React.FC<PairingCardProps> = ({ pairing }) => {
             Body text that demonstrates readability and flow.
           </p>
           <button
-            className="text-sm font-medium px-4 py-1.5 bg-primary-900 dark:bg-primary-50 text-white dark:text-primary-900 rounded-lg"
+            className="text-sm font-medium px-4 py-1.5 bg-primary-900 dark:bg-primary-50 text-white dark:text-primary-900 rounded-lg transition-colors"
             style={{ fontFamily: `"${pairing.bodyFont}", sans-serif` }}
           >
             Button Text
@@ -88,7 +88,7 @@ export const PairingCard: React.FC<PairingCardProps> = ({ pairing }) => {
         <div className="shimmer-border w-full">
           <button
             onClick={handleTryPairing}
-            className="shimmer-border-inner w-full font-medium px-6 py-3 text-white dark:text-primary-900 hover:bg-primary-950 dark:hover:bg-primary-100 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="shimmer-border-inner w-full font-medium px-6 py-3 hover:bg-primary-950 dark:hover:bg-primary-100 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Try this pairing
           </button>

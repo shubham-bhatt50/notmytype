@@ -1,28 +1,47 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useTheme } from "@/lib/theme";
 
 export const ThemeToggle: React.FC = () => {
   const [mounted, setMounted] = useState(false);
-  const [hasProvider, setHasProvider] = useState(false);
-  let theme: "light" | "dark" = "light";
-  let toggleTheme: () => void = () => {};
-
-  try {
-    const themeContext = useTheme();
-    theme = themeContext.theme;
-    toggleTheme = themeContext.toggleTheme;
-    if (!hasProvider) setHasProvider(true);
-  } catch {
-    // Provider not available during SSR
-  }
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
     setMounted(true);
+    // Check current theme
+    const root = document.documentElement;
+    const isDark = root.classList.contains("dark");
+    setTheme(isDark ? "dark" : "light");
+
+    // Listen for theme changes
+    const observer = new MutationObserver(() => {
+      const isDark = root.classList.contains("dark");
+      setTheme(isDark ? "dark" : "light");
+    });
+
+    observer.observe(root, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
   }, []);
 
-  if (!mounted || !hasProvider) {
+  const toggleTheme = () => {
+    const root = document.documentElement;
+    const newTheme = theme === "light" ? "dark" : "light";
+    
+    if (newTheme === "dark") {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+    
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+  };
+
+  if (!mounted) {
     return (
       <div className="p-2 rounded-lg bg-neutral-100 dark:bg-primary-700">
         <div className="w-5 h-5" />
