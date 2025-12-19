@@ -29,7 +29,7 @@ function PlaygroundContent() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="text-xl font-bold text-primary-900">
-              NotMyType
+              Not my type
             </Link>
             <nav className="flex items-center gap-4">
               <Link

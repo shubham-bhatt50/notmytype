@@ -45,7 +45,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "NotMyType - Typography Pairing Tool",
+  title: "Not my type - Typography Pairing Tool",
   description: "Explore, validate, and save font combinations with confidence",
 };
 

@@ -55,7 +55,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <Link href="/" className="flex items-center gap-2">
               <h1 className="text-2xl font-bold text-primary-900">
-                NotMyType
+                Not my type
               </h1>
             </Link>
             <nav className="flex items-center gap-4">
