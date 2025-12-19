@@ -1,0 +1,109 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { FontSelector } from "@/components/playground/FontSelector";
+import { PreviewCanvas } from "@/components/playground/PreviewCanvas";
+import { ComponentPreviews } from "@/components/playground/ComponentPreviews";
+import { ExportActions } from "@/components/playground/ExportActions";
+import { decodeUrlToPairing } from "@/lib/urlState";
+import { useSearchParams } from "next/navigation";
+import Link from "next/link";
+
+export default function PlaygroundPage() {
+  const searchParams = useSearchParams();
+  const [headingFont, setHeadingFont] = useState("Inter");
+  const [bodyFont, setBodyFont] = useState("Inter");
+
+  useEffect(() => {
+    const pairing = decodeUrlToPairing(searchParams);
+    if (pairing) {
+      setHeadingFont(pairing.headingFont);
+      setBodyFont(pairing.bodyFont);
+    }
+  }, [searchParams]);
+
+  return (
+    <div className="min-h-screen bg-neutral-50">
+      {/* Header */}
+      <header className="bg-white border-b border-neutral-200 sticky top-0 z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="text-xl font-bold text-primary-900">
+              NotMyType
+            </Link>
+            <nav className="flex items-center gap-4">
+              <Link
+                href="/"
+                className="text-sm font-medium text-neutral-700 hover:text-primary-900 transition-colors"
+              >
+                Gallery
+              </Link>
+              <Link
+                href="/saved"
+                className="text-sm font-medium text-neutral-700 hover:text-primary-900 transition-colors"
+              >
+                Saved
+              </Link>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="mb-6">
+          <h1 className="text-3xl font-bold text-primary-900 mb-2">
+            Typography Playground
+          </h1>
+          <p className="text-neutral-600">
+            Build and test custom font pairings with live previews
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Left Column - Controls */}
+          <div className="space-y-6">
+            <div className="bg-white rounded-2xl shadow-md border border-neutral-200 p-6">
+              <h2 className="text-lg font-semibold text-primary-900 mb-4">
+                Font Selection
+              </h2>
+              <div className="space-y-6">
+                <FontSelector
+                  label="Heading Font"
+                  value={headingFont}
+                  onChange={setHeadingFont}
+                />
+                <FontSelector
+                  label="Body Font"
+                  value={bodyFont}
+                  onChange={setBodyFont}
+                />
+              </div>
+            </div>
+
+            {/* Live Preview Canvas */}
+            <PreviewCanvas
+              headingFont={headingFont}
+              bodyFont={bodyFont}
+            />
+
+            {/* Save & Export */}
+            <ExportActions
+              headingFont={headingFont}
+              bodyFont={bodyFont}
+            />
+          </div>
+
+          {/* Right Column - Component Previews */}
+          <div>
+            <ComponentPreviews
+              headingFont={headingFont}
+              bodyFont={bodyFont}
+            />
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}
+
