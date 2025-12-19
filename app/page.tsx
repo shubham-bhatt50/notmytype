@@ -59,7 +59,7 @@ export default function Home() {
             <Link href="/" className="flex items-center gap-2">
               <h1 className="text-2xl font-bold text-primary-900 dark:text-primary-50">
                 Not my type
-              </h1>
+          </h1>
             </Link>
             <nav className="flex items-center gap-4">
               <Link
@@ -71,7 +71,7 @@ export default function Home() {
               <Link
                 href="/saved"
                 className="text-sm font-medium text-neutral-700 dark:text-neutral-300 hover:text-primary-900 dark:hover:text-primary-200 transition-colors"
-              >
+            >
                 Saved
               </Link>
               <ThemeToggle />

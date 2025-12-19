@@ -8,12 +8,12 @@ export const ThemeToggle: React.FC = () => {
 
   useEffect(() => {
     setMounted(true);
-    // Check current theme
+    // Check current theme from DOM
     const root = document.documentElement;
     const isDark = root.classList.contains("dark");
     setTheme(isDark ? "dark" : "light");
 
-    // Listen for theme changes
+    // Listen for theme changes from ThemeProvider
     const observer = new MutationObserver(() => {
       const isDark = root.classList.contains("dark");
       setTheme(isDark ? "dark" : "light");
@@ -28,8 +28,11 @@ export const ThemeToggle: React.FC = () => {
   }, []);
 
   const toggleTheme = () => {
+    if (typeof window === "undefined") return;
+    
     const root = document.documentElement;
-    const newTheme = theme === "light" ? "dark" : "light";
+    const currentIsDark = root.classList.contains("dark");
+    const newTheme = currentIsDark ? "light" : "dark";
     
     if (newTheme === "dark") {
       root.classList.add("dark");
@@ -39,6 +42,9 @@ export const ThemeToggle: React.FC = () => {
     
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
+    
+    // Trigger a custom event so ThemeProvider can sync
+    window.dispatchEvent(new CustomEvent("theme-change", { detail: newTheme }));
   };
 
   if (!mounted) {
