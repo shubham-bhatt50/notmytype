@@ -73,36 +73,29 @@ body {
   transition-duration: 200ms;
 }
 
-/* Shimmer animation for button border */
+/* Shimmer border animation */
 @keyframes shimmer-border {
   0% {
-    left: -100%;
+    background-position: 0% 50%;
   }
   100% {
-    left: 100%;
+    background-position: 200% 50%;
   }
 }
 
 .shimmer-border {
   position: relative;
-  overflow: hidden;
+  border-radius: 12px;
+  padding: 2px;
+  background: linear-gradient(90deg, #8B5CF6, #EF4444, #8B5CF6, #EF4444, #8B5CF6);
+  background-size: 300% 100%;
+  animation: shimmer-border 3s ease-in-out infinite;
 }
 
-.shimmer-border::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: -100%;
-  width: 50%;
-  height: calc(100% + 2px);
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  animation: shimmer-border 3s ease-in-out infinite;
-  pointer-events: none;
+.shimmer-border-inner {
+  position: relative;
+  width: 100%;
+  background: var(--color-primary-900);
+  border-radius: 10px;
   z-index: 1;
-  border-radius: inherit;
 }

@@ -23,10 +23,10 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={`${baseStyles} ${variants[variant]} ${className} relative`}
+      className={`${baseStyles} ${variants[variant]} ${className}`}
       {...props}
     >
-      <span className="relative z-10">{children}</span>
+      {children}
     </button>
   );
 };
